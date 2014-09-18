@@ -67,6 +67,12 @@ namespace CRM_BAL
 
         //followup comments/notes
         public int CommentsID { get; set; }
+
+        public int ActivityID { get; set; }
+
+        public int FollowUPID1 { get; set; }
+
+        public int CampaignID { get; set; }
         
     }
 }
