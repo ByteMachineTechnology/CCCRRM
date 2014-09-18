@@ -3594,7 +3594,7 @@ namespace CRM_User_Interface
                 con.Close();
             }
 
-            FollowUp_FillData();
+            FillData_FollowupDetails();
             //Load_Followup_City();
             //Load_Followup_Country();
             //Load_Followup_State();
@@ -5034,6 +5034,9 @@ namespace CRM_User_Interface
         #endregion StockDetails Event
         #endregion StockDetails Function
 
+
+
+        #region FollowupView Buttin Event
         private void menu_EmployeeDetails_Click(object sender, RoutedEventArgs e)
         {
             grdAdm_EmployeeDetails.Visibility = System.Windows.Visibility.Visible;
@@ -5070,6 +5073,74 @@ namespace CRM_User_Interface
             }
             //obj.Show();
         }
+
+        private void btnFollowup_ViewInfor_Click(object sender, RoutedEventArgs e)
+        {
+            grd_LeadInformation.Visibility = System.Windows.Visibility.Visible;
+            FillData_FollowupDetails();
+            ViewAllComments_Details();
+            FollowupAllProducts_Details();
+        }
+
+        private void btnFollowupBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            var fd = new Microsoft.Win32.OpenFileDialog();
+            //   fd.Filter = "*.jpeg";
+
+            fd.Filter = "All image formats (*.jpg; *.jpeg; *.bmp; *.png; *.gif)|*.jpg;*.jpeg;*.bmp;*.png;*.gif";
+            var ret = fd.ShowDialog();
+
+            if (ret.GetValueOrDefault())
+            {
+
+                txtFollowup_PhotoPath.Text = fd.FileName;
+                filepath = fd.FileName;
+
+                try
+                {
+                    bmp = new BitmapImage(new Uri(fd.FileName, UriKind.Absolute));
+                    imgWalkins.Source = bmp;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Invalid image file.", "Browse", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
+        private void btnFollowupSavePhoto(object sender, RoutedEventArgs e)
+        {
+            string imagepath = filepath.ToString();
+            string picname = imagepath.Substring(imagepath.LastIndexOf('\\'));
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + '\\';
+            if (!(System.IO.Directory.Exists(path)))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+            string path1 = path + "\\images\\WalkIns\\" + picname + ".JPG";
+            ///
+            using (System.IO.FileStream filestream = new System.IO.FileStream(Convert.ToString(path1), System.IO.FileMode.Create))
+            {
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bmp));
+                encoder.QualityLevel = 100;
+                encoder.Save(filestream);
+            }
+            //MessageBox.Show("Image Successfully Saved :" + path + "'\'Image'\'" + picname);
+            frmValidationMessage obj = new frmValidationMessage();
+            obj.lblMessage.Content = "Image Save Successfully";
+            obj.ShowDialog();
+
+
+        }
+
+        private void btnSaleProductsFetch_Click(object sender, RoutedEventArgs e)
+        {
+            StockProducts sp = new StockProducts();
+            sp.Show();
+        }
+        #endregion FollowupView Buttin Event
 
         public void ProductID123(string piid)
         {
@@ -5149,24 +5220,19 @@ namespace CRM_User_Interface
             
             
         }
-
-        private void btnSaleProductsFetch_Click(object sender, RoutedEventArgs e)
-        {
-            StockProducts sp = new StockProducts();
-            sp.Show();
-        }
-        
-        public void FollowUp_FillData()
+       
+        public void FillData_FollowupDetails()
         {
             try
             {
                 con.Open();
-                string sqlquery = "SELECT F.[ID],F.[EmployeeID],F.[Followup_ID],F.[FTitle] + ' ' + F.[FiratName] + ' ' + F.[LastName] AS [FollowupName],F.[Date_Of_Birth],F.[Wbsite] " +
-                                  ",F.[Mobile_No],F.[Phone_No],F.[SourceOfEnquiry],F.[Occupation],F.[AnnualRevenue],F.[Email_ID],F.[FaxNo],F.[Wbsite],F.[Street],F.[City],F.[State],F.[ZipNo],F.[Country],F.[Description],F.[F_Date] " +
+                string sqlquery = "SELECT F.[ID],F.[EmployeeID],F.[Followup_ID],F.[FTitle] + ' ' + F.[FiratName] + ' ' + F.[LastName] AS [FollowupName],F.[Date_Of_Birth],F.[Mobile_No] ,F.[Phone_No] " +
+                                  ",F.[SourceOfEnquiry],F.[Occupation],F.[AnnualRevenue],F.[Email_ID],F.[FaxNo],F.[Wbsite],F.[Street],F.[City],F.[State],F.[ZipNo],F.[Country],F.[Description] " +
+                                  ",F.[F_Date] " +
                                   ",E.[EmployeeFirstName] + ' ' + E.[EmployeeLastName] AS [EmployeeName] " +
                                   "FROM [tlb_FollowUp] F " +
                                   "INNER JOIN [tbl_Employee] E ON E.[ID]=F.[EmployeeID] " +
-                                  "where F.[ID]='" + txtFollowupID.Text + "' ";
+                                  "WHERE F.[ID]='" + txtFollowupViewID.Text + "' ";
                 SqlCommand cmd = new SqlCommand(sqlquery, con);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -5174,7 +5240,6 @@ namespace CRM_User_Interface
                 if (dt.Rows.Count > 0)
                 {
                     //leadinformation
-                    txtFollowupViewID.Text = dt.Rows[0]["ID"].ToString();
                     lblFollow_upName.Content = dt.Rows[0]["FollowupName"].ToString();
                     lblLeadOwnerName.Content = dt.Rows[0]["EmployeeName"].ToString();
                     lblLeadOwnerPhNo.Content = dt.Rows[0]["Phone_No"].ToString();
@@ -5184,19 +5249,17 @@ namespace CRM_User_Interface
                     lblFPhoneNo.Content = dt.Rows[0]["Phone_No"].ToString();
                     lblFMobileNo.Content = dt.Rows[0]["Mobile_No"].ToString();
                     lblFDOB.Content = dt.Rows[0]["Date_Of_Birth"].ToString();
-                    lblFLeadSource.Content = dt.Rows[0]["SourceOfEnquiry"].ToString();
-                    lblFAnulRevenu.Content = dt.Rows[0]["AnnualRevenue"].ToString();
                     lblFEmail.Content = dt.Rows[0]["Email_ID"].ToString();
                     lblFFax.Content = dt.Rows[0]["FaxNo"].ToString();
                     lblFWebsite.Content = dt.Rows[0]["Wbsite"].ToString();
+                    lblFLeadSource.Content = dt.Rows[0]["SourceOfEnquiry"].ToString();
+                    lblFAnulRevenu.Content = dt.Rows[0]["AnnualRevenue"].ToString();
                     lblFOccupation.Content = dt.Rows[0]["Occupation"].ToString();
-                    //address information
                     lblFStreet.Content = dt.Rows[0]["Street"].ToString();
                     lblFCity.Content = dt.Rows[0]["City"].ToString();
                     lblFState.Content = dt.Rows[0]["State"].ToString();
-                    lblFCountry.Content = dt.Rows[0]["Country"].ToString();
                     lblFZipCode.Content = dt.Rows[0]["ZipNo"].ToString();
-                    //description
+                    lblFCountry.Content = dt.Rows[0]["Country"].ToString();
                     lblFDesctiption.Content = dt.Rows[0]["Description"].ToString();
                 }
             }
@@ -5208,66 +5271,6 @@ namespace CRM_User_Interface
             {
                 con.Close();
             }
-            btnAdm_Emp_Save.Content = "Update";
-        }
-
-        private void btnFollowup_ViewInfor_Click(object sender, RoutedEventArgs e)
-        {
-            grd_LeadInformation.Visibility = System.Windows.Visibility.Visible;
-            FollowUp_FillData();
-        }
-
-        private void btnFollowupBrowse_Click(object sender, RoutedEventArgs e)
-        {
-            var fd = new Microsoft.Win32.OpenFileDialog();
-            //   fd.Filter = "*.jpeg";
-
-            fd.Filter = "All image formats (*.jpg; *.jpeg; *.bmp; *.png; *.gif)|*.jpg;*.jpeg;*.bmp;*.png;*.gif";
-            var ret = fd.ShowDialog();
-
-            if (ret.GetValueOrDefault())
-            {
-
-                txtFollowup_PhotoPath.Text = fd.FileName;
-                filepath = fd.FileName;
-
-                try
-                {
-                    bmp = new BitmapImage(new Uri(fd.FileName, UriKind.Absolute));
-                    imgWalkins.Source = bmp;
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Invalid image file.", "Browse", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                }
-            }
-        }
-
-        private void btnFollowupSavePhoto(object sender, RoutedEventArgs e)
-        {
-            string imagepath = filepath.ToString();
-            string picname = imagepath.Substring(imagepath.LastIndexOf('\\'));
-
-            string path = AppDomain.CurrentDomain.BaseDirectory + '\\';
-            if (!(System.IO.Directory.Exists(path)))
-            {
-                System.IO.Directory.CreateDirectory(path);
-            }
-            string path1 = path + "\\images\\WalkIns\\" + picname + ".JPG";
-            ///
-            using (System.IO.FileStream filestream = new System.IO.FileStream(Convert.ToString(path1), System.IO.FileMode.Create))
-            {
-                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(bmp));
-                encoder.QualityLevel = 100;
-                encoder.Save(filestream);
-            }
-            //MessageBox.Show("Image Successfully Saved :" + path + "'\'Image'\'" + picname);
-            frmValidationMessage obj = new frmValidationMessage();
-            obj.lblMessage.Content = "Image Save Successfully";
-            obj.ShowDialog();
-
-
         }
         
         #region FollowupComments Function
@@ -5421,6 +5424,7 @@ namespace CRM_User_Interface
         #endregion FollowupComments Function
 
         #region FollowupActivity Function
+        #region FollowupActi Fun
         public void ViewAllActivity_Details()
         {
             try
@@ -5483,6 +5487,27 @@ namespace CRM_User_Interface
             return result;
         }
 
+        public void FollowupActivity_Delete()
+        {
+            try
+            {
+                balfollow.Flag = 1;
+                balfollow.ActivityID = Convert.ToInt32(txtFollowupACTID.Text);
+                dalfollow.DeleteFollwupActivityDelete_Save_Insert_Update_Delete(balfollow);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        #endregion FollowupActi Fun
+
+        #region FollowupActi Button Event
         private void btnFA_ActivitySave_Click(object sender, RoutedEventArgs e)
         {
             if (FollowupActivity_Validation() == true)
@@ -5526,8 +5551,195 @@ namespace CRM_User_Interface
             grdFollup_Activity.Visibility = System.Windows.Visibility.Visible;
             dgvFollowUp_Activities.CanUserAddRows = false;
         }
+
+        private void btndgv_FollowupActivityDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Do You Want To Delete", "Byte Machine Technology", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    var id1 = (DataRowView)dgvFollowUp_Activities.SelectedItem; //get specific ID from          DataGrid after click on Edit button in DataGrid   
+                    PK_ID = Convert.ToInt32(id1.Row["Id"].ToString());
+                    con.Open();
+                    string sqlquery = "SELECT * FROM tlb_FollowUpActivity where Id='" + PK_ID + "' ";
+                    SqlCommand cmd = new SqlCommand(sqlquery, con);
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtFollowupACTID.Text = dt.Rows[0]["ID"].ToString();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                FollowupActivity_Delete();
+                ViewAllActivity_Details();
+            }
+        }
+
+        #endregion FollowupActi Button Event
         #endregion FollowupActivity Function
+
+        #region ViewFollowupProducts Function
+        #region ViewFollowupProducts Button Event
+        private void hlViewFollowProducts_Click(object sender, RoutedEventArgs e)
+        {
+            frmAddProducts obj = new frmAddProducts();
+            obj.ShowDialog();
+            if (obj.DialogResult == true)
+            {
+                if (dtstat.Rows.Count == 0)
+                {
+                    dtstat.Columns.Add("ID");
+                    dtstat.Columns.Add("Product_Name");
+                    dtstat.Columns.Add("Brand_Name");
+                    dtstat.Columns.Add("Product_Category");
+                    dtstat.Columns.Add("Model_No");
+                    dtstat.Columns.Add("Color");
+                    dtstat.Columns.Add("Price");
+                }
+                //DataRow dr = dtstat.NewRow();
+                //dr["ID"] = obj.txtProductsID.Text;
+                //dr["Product_Name"] = obj.txtPRoductName.Text;
+                //dr["Brand_Name"] = obj.txtBrandName.Text;
+                //dr["Product_Category"] = obj.txtPRoductCategory.Text;
+                //dr["Model_No"] = obj.txtModelNo.Text;
+                //dr["Color"] = obj.txtColor.Text;
+                //dr["Price"] = obj.txtPrice.Text;
+
+                try
+                {
+                    balfollwproducts.Flag = 1;
+                    balfollwproducts.FolloupProductID = Convert.ToInt32(txtFollowupViewID.Text);
+                    balfollwproducts.FProductID = Convert.ToInt32(dtstat.Rows[i]["ID"].ToString());
+                    balfollwproducts.S_Status = "Active";
+                    balfollwproducts.C_Date = System.DateTime.Now.ToShortDateString();
+                    dalfollow.FollwupProducts_Save_Insert_Update_Delete(balfollwproducts);
+                    MessageBox.Show("Done");
+
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                FollowupAllProducts_Details();
+                //dtstat.Rows.Add(dr);
+                //dgvFollowUp_Products.ItemsSource = dtstat.DefaultView;
+                //dgvFollowUp_Products.CanUserAddRows = false;
                 
+            }
+        }
+
+        private void btndgv_FollowUpPro_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Do You Want To Delete", "Byte Machine Technology", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    var id1 = (DataRowView)dgvFollowUp_Products.SelectedItem; //get specific ID from          DataGrid after click on Edit button in DataGrid   
+                    PK_ID = Convert.ToInt32(id1.Row["Id"].ToString());
+                    con.Open();
+                    string sqlquery = "SELECT * FROM tlb_FollowUpProducts where Id='" + PK_ID + "' ";
+                    SqlCommand cmd = new SqlCommand(sqlquery, con);
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtFollowupAddProductID.Text = dt.Rows[0]["ID"].ToString();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                FollowupAddProducts_Delete();
+                FollowupAllProducts_Details();
+            }
+        }
+
+        #endregion ViewFollowupProducts Button Event
+
+        #region ViewFollowupProducts Fun
+        public void FollowupAddProducts_Delete()
+        {
+            try
+            {
+                balfollow.Flag = 1;
+                balfollow.FProductID = Convert.ToInt32(txtFollowupAddProductID.Text);
+                dalfollow.DeleteFollwupAddProductsDelete_Save_Insert_Update_Delete(balfollow);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void FollowupAllProducts_Details()
+        {
+            try
+            {
+                String str;
+                //con.Open();
+                DataSet ds = new DataSet();
+                str = "SELECT S.[ID],S.[FollowupID],S.[ProductID] " +
+                      ",P.[ID],P.[Domain_ID],P.[Product_ID],P.[Brand_ID],P.[P_Category],P.[Model_No_ID],P.[Color_ID],P.[Price] " +
+                      ",DM.[Domain_Name],PM.[Product_Name], B.[Brand_Name] , PC.[Product_Category] ,MN.[Model_No] ,C.[Color] " +
+                      "FROM [tlb_FollowUpProducts] S " +
+                      "INNER JOIN [Pre_Products] P ON P.[ID]=S.[ProductID] " +
+                      "INNER JOIN [tb_Domain] DM ON DM.[ID]=P.[Domain_ID] " +
+                      "INNER JOIN [tlb_Products] PM ON PM.[ID]=P.[Product_ID] " +
+                      "INNER JOIN [tlb_Brand] B ON B.[ID]=P.[Brand_ID] " +
+                      "INNER JOIN [tlb_P_Category] PC ON PC.[ID]=P.[P_Category]" +
+                      "INNER JOIN [tlb_Model] MN ON MN.[ID]=P.[Model_No_ID] " +
+                      "INNER JOIN [tlb_Color] C ON C.[ID]=P.[Color_ID] " +
+                      "WHERE S.[FollowupID]= '" + txtFollowupViewID.Text + "' AND S.[S_Status] = 'Active' ORDER BY S.[Product_Name] ASC";
+
+                //str = str + " P.[S_Status] = 'Active' ORDER BY PM.[Product_Name] ASC ";
+                //str = str + " S_Status = 'Active' ";
+                SqlCommand cmd = new SqlCommand(str, con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+
+                //if (ds.Tables[0].Rows.Count > 0)
+                //{
+                dgvFollowUp_Products.ItemsSource = ds.Tables[0].DefaultView;
+                //}
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion ViewFollowupProducts Fun
+        #endregion ViewFollowupProducts Function
+
         private void btnFA_Attached_Click(object sender, RoutedEventArgs e)
         {
             
@@ -7288,6 +7500,8 @@ namespace CRM_User_Interface
             LeadCampaign_Details();
             CreateContactCampaign_Details();
         }
+
+
 
         #region LeadMassCampaign Function
         #region MassCampaign Event
@@ -9795,57 +10009,63 @@ namespace CRM_User_Interface
             grd_View_FollowupDetails.Visibility = System.Windows.Visibility.Hidden;
         }
 
-        public void FillData_FollowupDetails()
+        private void hlAddFollCampaign_Click(object sender, RoutedEventArgs e)
         {
-            try
+            frmAddCampaign obj = new frmAddCampaign();
+            obj.AllCampaign_Details();
+            obj.ShowDialog();
+
+            if (obj.DialogResult == true)
             {
-                con.Open();
-                string sqlquery = "SELECT F.[ID],F.[EmployeeID],F.[Followup_ID],F.[FTitle] + ' ' + F.[FiratName] + ' ' + F.[LastName] AS [FollowupName],F.[Date_Of_Birth],F.[Mobile_No] ,F.[Phone_No] " + 
-                                  ",F.[SourceOfEnquiry],F.[Occupation],F.[AnnualRevenue],F.[Email_ID],F.[FaxNo],F.[Wbsite],F.[Street],F.[City],F.[State],F.[ZipNo],F.[Country],F.[Description] " +
-                                  ",F.[F_Date] " +
-                                  ",E.[EmployeeFirstName] + ' ' + E.[EmployeeLastName] AS [EmployeeName] " +
-                                  "FROM [tlb_FollowUp] F " +
-                                  "INNER JOIN [tbl_Employee] E ON E.[ID]=F.[EmployeeID] " +
-                                  "WHERE F.[ID]='" + txtFollowupViewID.Text + "' ";
-                SqlCommand cmd = new SqlCommand(sqlquery, con);
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                if (dt.Rows.Count > 0)
+                if (dtstat.Rows.Count == 0)
                 {
-                    //leadinformation
-                    lblFollow_upName.Content = dt.Rows[0]["FollowupName"].ToString();
-                    lblLeadOwnerName.Content = dt.Rows[0]["EmployeeName"].ToString();
-                    lblLeadOwnerPhNo.Content = dt.Rows[0]["Phone_No"].ToString();
-                    lblLeadOwnerMbNo.Content = dt.Rows[0]["Mobile_No"].ToString();
-                    lblFLeadName.Content = dt.Rows[0]["FollowupName"].ToString();
-                    lblFLeadOwner.Content = dt.Rows[0]["EmployeeName"].ToString();
-                    lblFPhoneNo.Content = dt.Rows[0]["Phone_No"].ToString();
-                    lblFMobileNo.Content = dt.Rows[0]["Mobile_No"].ToString();
-                    lblFDOB.Content = dt.Rows[0]["Date_Of_Birth"].ToString();
-                    lblFEmail.Content = dt.Rows[0]["Email_ID"].ToString();
-                    lblFFax.Content = dt.Rows[0]["FaxNo"].ToString();
-                    lblFWebsite.Content = dt.Rows[0]["Wbsite"].ToString();
-                    lblFLeadSource.Content = dt.Rows[0]["SourceOfEnquiry"].ToString();
-                    lblFAnulRevenu.Content = dt.Rows[0]["AnnualRevenue"].ToString();
-                    lblFOccupation.Content = dt.Rows[0]["Occupation"].ToString();
-                    lblFStreet.Content = dt.Rows[0]["Street"].ToString();
-                    lblFCity.Content = dt.Rows[0]["City"].ToString();
-                    lblFState.Content = dt.Rows[0]["State"].ToString();
-                    lblFZipCode.Content = dt.Rows[0]["ZipNo"].ToString();
-                    lblFCountry.Content = dt.Rows[0]["Country"].ToString();
-                    lblFDesctiption.Content = dt.Rows[0]["Description"].ToString();
+                    dtstat.Columns.Add("ID");
+                    dtstat.Columns.Add("CampaignName");
+                    dtstat.Columns.Add("CampaignType");
+                    dtstat.Columns.Add("StartDate");
+                    dtstat.Columns.Add("EndDate");
+                    dtstat.Columns.Add("Status");
                 }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                con.Close();
+                //DataRow dr = dtstat.NewRow();
+                //dr["ID"] = obj.txtCampaignID.Text;
+                //dr["CampaignName"] = obj.txtCampaignName.Text;
+                //dr["CampaignType"] = obj.txtCampaignType.Text;
+                //dr["StartDate"] = obj.dtpStartDate.Text;
+                //dr["EndDate"] = obj.dtpEndDate;
+                //dr["Status"] = obj.txtStatus.Text;
+                //txtAddCampaignID.Text = obj.txtCampaignID.Text;
+                //dtstat.Rows.Add(dr);
+                //dgvContact_Compaigns.ItemsSource = dtstat.DefaultView;
+                //dgvContact_Compaigns.CanUserAddRows = false;
+
+                try
+                {
+                    balfollow.Flag = 1;
+                    balfollow.FollowUPID1 = Convert.ToInt32(txtFollowupViewID.Text);
+                    balfollow.CampaignID = Convert.ToInt32(txtAddCampaignID.Text);
+                    balfollow.S_Status = "Active";
+                    balfollow.C_Date = System.DateTime.Now.ToString();
+                    dalfollow.FollwupAddCampaign_Save_Insert_Update_Delete(balfollow);
+                    txtAddCampaignID.Text = "";
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+                //ViewAllContactCampaign_Details();
             }
         }
+
+        
+
+        
+
+        
+
 
 
 

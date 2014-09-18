@@ -187,7 +187,74 @@ namespace CRM_DAL
                 throw;
             }
             finally { con.Close(); }
+        }
+
+        public int DeleteFollwupAddProductsDelete_Save_Insert_Update_Delete(BAL_Followup balfp)
+        {
+            try
+            {
+
+                con.Open();
+                cmd = new SqlCommand("SP_FollowupAddProductsDelete", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Flag", 1);
+                cmd.Parameters.AddWithValue("@ID", balfp.FProductID);
+                int i = cmd.ExecuteNonQuery();
+                return i;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { con.Close(); }
+        }
+
+        public int DeleteFollwupActivityDelete_Save_Insert_Update_Delete(BAL_Followup balfp)
+        {
+            try
+            {
+
+                con.Open();
+                cmd = new SqlCommand("SP_FollowupActivityDelete", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Flag", 1);
+                cmd.Parameters.AddWithValue("@ID", balfp.ActivityID);
+                int i = cmd.ExecuteNonQuery();
+                return i;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { con.Close(); }
+        }
+
+        public int FollwupAddCampaign_Save_Insert_Update_Delete(BAL_Followup balfp)
+        {
+            try
+            {
+
+                con.Open();
+                cmd = new SqlCommand("SP_FollowupAddCamapign", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Flag", 1);
+                cmd.Parameters.AddWithValue("@FollowupID", balfp.Followup_ID);
+                cmd.Parameters.AddWithValue("@CampaignID", balfp.CampaignID);
+                cmd.Parameters.AddWithValue("@S_Status", balfp.S_Status);
+                cmd.Parameters.AddWithValue("@C_Date", balfp.C_Date);
+                int i = cmd.ExecuteNonQuery();
+                return i;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { con.Close(); }
         }        
+
 
     }
 }

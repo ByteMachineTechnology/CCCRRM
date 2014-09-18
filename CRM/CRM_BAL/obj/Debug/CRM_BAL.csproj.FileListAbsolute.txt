@@ -23,3 +23,4 @@ C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_BAL\bin\Debug\CRM_BAL.dll
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_BAL\bin\Debug\CRM_BAL.pdb
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_BAL\obj\Debug\CRM_BAL.dll
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_BAL\obj\Debug\CRM_BAL.pdb
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_BAL\obj\Debug\CRM_BAL.csprojResolveAssemblyReference.cache
