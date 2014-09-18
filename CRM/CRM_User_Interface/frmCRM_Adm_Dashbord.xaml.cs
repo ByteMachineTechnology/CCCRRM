@@ -9881,7 +9881,7 @@ namespace CRM_User_Interface
             grd_SalesPurches.Visibility = Visibility;
         }
 
-<<<<<<< HEAD
+
         private void btnSaleExit_Click(object sender, RoutedEventArgs e)
         {
             grd_SalesPurches.Visibility = Visibility.Hidden;
@@ -10025,7 +10025,26 @@ namespace CRM_User_Interface
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 // con.Open();
                 da.Fill(ds);
-=======
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+
+                    // cmbInvoice_Tax1.Items.Insert(0, "---Select---");
+
+                    cmbInvoice_Tax1.ItemsSource = ds.Tables[0].DefaultView;
+
+                    cmbInvoice_Tax1.DisplayMemberPath = ds.Tables[0].Columns["Tax_Type"].ToString();
+                    cmbInvoice_Tax1.SelectedValuePath = ds.Tables[0].Columns["Tax_Percentage"].ToString();
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { con.Close(); }
+
+        }
         public void FillData_FollowupDetails()
         {
             try
@@ -10082,29 +10101,11 @@ namespace CRM_User_Interface
 
 
 
->>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716
-
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-
-                    // cmbInvoice_Tax1.Items.Insert(0, "---Select---");
-
-                    cmbInvoice_Tax1.ItemsSource = ds.Tables[0].DefaultView;
-
-                    cmbInvoice_Tax1.DisplayMemberPath = ds.Tables[0].Columns["Tax_Type"].ToString();
-                    cmbInvoice_Tax1.SelectedValuePath = ds.Tables[0].Columns["Tax_Percentage"].ToString();
-
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally { con.Close(); }
 
 
-        }
+                
+
+        
 
         private void cmbInvoice_Tax1_DropDownClosed(object sender, EventArgs e)
         {
