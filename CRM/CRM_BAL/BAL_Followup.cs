@@ -64,6 +64,9 @@ namespace CRM_BAL
         public int FolloupProductID { get; set; }
 
         public int FProductID { get; set; }
+
+        //followup comments/notes
+        public int CommentsID { get; set; }
         
     }
 }
