@@ -33,6 +33,7 @@ C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_DAL\bin\Deb
 C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_DAL\obj\Debug\CRM_DAL.csprojResolveAssemblyReference.cache
 C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_DAL\obj\Debug\CRM_DAL.dll
 C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_DAL\obj\Debug\CRM_DAL.pdb
+<<<<<<< HEAD
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_DAL.dll
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_DAL.pdb
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_BAL.dll
@@ -40,3 +41,12 @@ C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_BAL.pd
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\obj\Debug\CRM_DAL.csprojResolveAssemblyReference.cache
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\obj\Debug\CRM_DAL.dll
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_DAL\obj\Debug\CRM_DAL.pdb
+=======
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_DAL.dll
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_DAL.pdb
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_BAL.dll
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\bin\Debug\CRM_BAL.pdb
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\obj\Debug\CRM_DAL.csprojResolveAssemblyReference.cache
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\obj\Debug\CRM_DAL.dll
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_DAL\obj\Debug\CRM_DAL.pdb
+>>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716

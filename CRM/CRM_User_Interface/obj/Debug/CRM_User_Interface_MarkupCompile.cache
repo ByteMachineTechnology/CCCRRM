@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\
+=======
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\
+>>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716
 CRM_User_Interface
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\App.xaml
 101905985749
 1-9177176
 16-1010158651
 161414580540
 ADD_Tax.xaml;frmAddCampaign.xaml;frmAddProducts.xaml;frmCampaginLeads.xaml;frmCRM_Adm_Dashbord.xaml;frmValidationMessage.xaml;frmViewEmployeeDetails.xaml;frm_FetchContactCustomerDetailsxaml.xaml;frm_FetchEmployeeDetails.xaml;StockProducts.xaml;
+=======
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\App.xaml
+7384744750
+
+11-58532780
+16626799376
+frmAddCampaign.xaml;frmAddProducts.xaml;frmCampaginLeads.xaml;frmCRM_Adm_Dashbord.xaml;frmValidationMessage.xaml;frmViewEmployeeDetails.xaml;StockProducts.xaml;
+>>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716
 
 False
 

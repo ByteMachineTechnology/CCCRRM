@@ -5417,7 +5417,7 @@ namespace CRM_User_Interface
             {
                 balfollwpcomt.Flag = 1;
                 balfollwpcomt.FollowupId = Convert.ToInt32(txtFollowupViewID.Text);
-                balfollwpcomt.Comments = lblwalkin.Content.ToString();
+                balfollwpcomt.Comments = txtFComments.Text;
                 balfollwpcomt.S_Status = "Active";
                 balfollwpcomt.C_Date = System.DateTime.Now.ToString();
                 dalfollowcomt.AddComments_Insert_Update_Delete(balfollwpcomt);
@@ -5444,6 +5444,61 @@ namespace CRM_User_Interface
             txtFComments.Text = "";
         }
         #endregion Followup Comments Button Event
+
+        #region FollowupCommentsNotes Event
+        private void btndgv_FComments_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Dou You Want To Delete Coments / Notes", "Byte Machine Technology", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    var id1 = (DataRowView)dgvFollowUp_Comments.SelectedItem; //get specific ID from          DataGrid after click on Edit button in DataGrid   
+                    PK_ID = Convert.ToInt32(id1.Row["Id"].ToString());
+                    con.Open();
+                    string sqlquery = "SELECT * FROM tlb_FollowUpComments where Id='" + PK_ID + "' ";
+                    SqlCommand cmd = new SqlCommand(sqlquery, con);
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtFollowup_CommentsID.Text = dt.Rows[0]["ID"].ToString();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                FollowupCommentsNotes_Delete();
+                ViewAllComments_Details();
+            }
+        }
+        #endregion FollowupCommentsNotes Event
+
+        #region FollowupCommentsDelete Fun
+        public void FollowupCommentsNotes_Delete()
+        {
+            try
+            {
+                balfollow.Flag = 1;
+                balfollow.CommentsID = Convert.ToInt32(txtCampaignNotesID.Text);
+                dalfollow.DeleteFollwupCommentsNotes_Save_Insert_Update_Delete(balfollow);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion FollowupCommentsDelete Fun
         #endregion FollowupComments Function
 
         #region FollowupActivity Function
@@ -9762,7 +9817,32 @@ namespace CRM_User_Interface
 
         private void btndgv_Followup_ViewDetails_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var id1 = (DataRowView)dgvFFollowupDetails.SelectedItem; //get specific ID from          DataGrid after click on Edit button in DataGrid   
+                PK_ID = Convert.ToInt32(id1.Row["Id"].ToString());
+                con.Open();
+                string sqlquery = "SELECT * FROM tlb_FollowUp where Id='" + PK_ID + "' ";
+                SqlCommand cmd = new SqlCommand(sqlquery, con);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    txtFollowupViewID.Text = dt.Rows[0]["ID"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
             grd_View_FollowupEntry.Visibility = System.Windows.Visibility.Visible;
+            FillData_FollowupDetails();
         }
 
         private void btndgv_Follouwup_Edit_Click(object sender, RoutedEventArgs e)
@@ -9801,6 +9881,7 @@ namespace CRM_User_Interface
             grd_SalesPurches.Visibility = Visibility;
         }
 
+<<<<<<< HEAD
         private void btnSaleExit_Click(object sender, RoutedEventArgs e)
         {
             grd_SalesPurches.Visibility = Visibility.Hidden;
@@ -9944,6 +10025,64 @@ namespace CRM_User_Interface
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 // con.Open();
                 da.Fill(ds);
+=======
+        public void FillData_FollowupDetails()
+        {
+            try
+            {
+                con.Open();
+                string sqlquery = "SELECT F.[ID],F.[EmployeeID],F.[Followup_ID],F.[FTitle] + ' ' + F.[FiratName] + ' ' + F.[LastName] AS [FollowupName],F.[Date_Of_Birth],F.[Mobile_No] ,F.[Phone_No] " + 
+                                  ",F.[SourceOfEnquiry],F.[Occupation],F.[AnnualRevenue],F.[Email_ID],F.[FaxNo],F.[Wbsite],F.[Street],F.[City],F.[State],F.[ZipNo],F.[Country],F.[Description] " +
+                                  ",F.[F_Date] " +
+                                  ",E.[EmployeeFirstName] + ' ' + E.[EmployeeLastName] AS [EmployeeName] " +
+                                  "FROM [tlb_FollowUp] F " +
+                                  "INNER JOIN [tbl_Employee] E ON E.[ID]=F.[EmployeeID] " +
+                                  "WHERE F.[ID]='" + txtFollowupViewID.Text + "' ";
+                SqlCommand cmd = new SqlCommand(sqlquery, con);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    //leadinformation
+                    lblFollow_upName.Content = dt.Rows[0]["FollowupName"].ToString();
+                    lblLeadOwnerName.Content = dt.Rows[0]["EmployeeName"].ToString();
+                    lblLeadOwnerPhNo.Content = dt.Rows[0]["Phone_No"].ToString();
+                    lblLeadOwnerMbNo.Content = dt.Rows[0]["Mobile_No"].ToString();
+                    lblFLeadName.Content = dt.Rows[0]["FollowupName"].ToString();
+                    lblFLeadOwner.Content = dt.Rows[0]["EmployeeName"].ToString();
+                    lblFPhoneNo.Content = dt.Rows[0]["Phone_No"].ToString();
+                    lblFMobileNo.Content = dt.Rows[0]["Mobile_No"].ToString();
+                    lblFDOB.Content = dt.Rows[0]["Date_Of_Birth"].ToString();
+                    lblFEmail.Content = dt.Rows[0]["Email_ID"].ToString();
+                    lblFFax.Content = dt.Rows[0]["FaxNo"].ToString();
+                    lblFWebsite.Content = dt.Rows[0]["Wbsite"].ToString();
+                    lblFLeadSource.Content = dt.Rows[0]["SourceOfEnquiry"].ToString();
+                    lblFAnulRevenu.Content = dt.Rows[0]["AnnualRevenue"].ToString();
+                    lblFOccupation.Content = dt.Rows[0]["Occupation"].ToString();
+                    lblFStreet.Content = dt.Rows[0]["Street"].ToString();
+                    lblFCity.Content = dt.Rows[0]["City"].ToString();
+                    lblFState.Content = dt.Rows[0]["State"].ToString();
+                    lblFZipCode.Content = dt.Rows[0]["ZipNo"].ToString();
+                    lblFCountry.Content = dt.Rows[0]["Country"].ToString();
+                    lblFDesctiption.Content = dt.Rows[0]["Description"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+
+
+
+>>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {

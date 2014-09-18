@@ -127,6 +127,7 @@ C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_User_Interf
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_User_Interface.exe.config
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.exe
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.pdb
+<<<<<<< HEAD
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_User_Interface.exe.config
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.exe
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.pdb
@@ -163,3 +164,31 @@ C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_DAL.dll
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_BAL.pdb
 C:\Users\Nazia Tabassum\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_DAL.pdb
+=======
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_User_Interface.exe
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_User_Interface.pdb
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_BAL.dll
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_DAL.dll
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_BAL.pdb
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_DAL.pdb
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.csprojResolveAssemblyReference.cache
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmAddCampaign.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmAddProducts.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmCampaginLeads.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmCRM_Adm_Dashbord.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmValidationMessage.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmViewEmployeeDetails.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\StockProducts.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmAddCampaign.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmAddProducts.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmCampaginLeads.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmCRM_Adm_Dashbord.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmValidationMessage.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frmViewEmployeeDetails.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\StockProducts.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\App.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface_MarkupCompile.cache
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.g.resources
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.Properties.Resources.resources
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.csproj.GenerateResource.Cache
+>>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716

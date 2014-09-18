@@ -131,9 +131,10 @@ namespace CRM_DAL
             }
             finally { con.Close(); }
         }
+
         public string  i;
         
-         public object View_Search_FollowupDetails(string TableName, string FirstName)
+        public object View_Search_FollowupDetails(string TableName, string FirstName)
         {
 
             string q = "SELECT [ID],[FiratName] + ' ' + [LastName] AS [FolloupName],[Mobile_No],[Phone_No],[AnnualRevenue] " +
@@ -165,7 +166,28 @@ namespace CRM_DAL
             return (s);
         }
 
-        
+        public int DeleteFollwupCommentsNotes_Save_Insert_Update_Delete(BAL_Followup balfp)
+        {
+            try
+            {
+
+                con.Open();
+                cmd = new SqlCommand("SP_FollowupCommentsNotes", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Flag", 1);
+                cmd.Parameters.AddWithValue("@ID", balfp.CommentsID);
+                int i = cmd.ExecuteNonQuery();
+                return i;
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { con.Close(); }
+        }        
 
     }
 }
