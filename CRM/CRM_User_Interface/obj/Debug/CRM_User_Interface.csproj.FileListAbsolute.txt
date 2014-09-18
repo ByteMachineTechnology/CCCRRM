@@ -192,3 +192,10 @@ C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_Use
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.Properties.Resources.resources
 C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.csproj.GenerateResource.Cache
 >>>>>>> 235af6503a5b70df161c0d002ce560a0083f8716
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\ADD_Tax.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frm_FetchContactCustomerDetailsxaml.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frm_FetchEmployeeDetails.baml
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\ADD_Tax.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frm_FetchContactCustomerDetailsxaml.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\frm_FetchEmployeeDetails.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface_Content.g.cs

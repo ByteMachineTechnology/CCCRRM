@@ -5248,10 +5248,11 @@ namespace CRM_User_Interface
             
             
         }
-<<<<<<< HEAD
        
-        public void FillData_FollowupDetails()
-=======
+        //public void FillData_FollowupDetails()
+        //{
+
+        //}
        //public void ProductID123(string piid)
        // {
        //     txtProductID.Text = piid;
@@ -5271,49 +5272,49 @@ namespace CRM_User_Interface
             txtContactCDID11.Text = cname;
             // txtSaleEmployeeName.Text = empname;
         }
-        private void btnSaleProductsFetch_Click(object sender, RoutedEventArgs e)
-        {
-            StockProducts sp = new StockProducts();
-            sp.ShowDialog();
 
-            if (sp.DialogResult == true)
-            {
+        //private void btnSaleProductsFetch_Click(object sender, RoutedEventArgs e)
+        //{
+        //    StockProducts sp = new StockProducts();
+        //    sp.ShowDialog();
 
-                try
-                {
-                    con.Open();
-                    DataSet ds = new DataSet();
-                    // DataTable dt = new DataTable();
-                    string qry = "Select  ID,Products123,AvilableQty, FinalPrice,Warranty from StockDetails where S_Status='Active' and ID='" + sp.txtStockPID.Text + "'  ";
-                    cmd = new SqlCommand(qry, con);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    // con.Open();
-                    da.Fill(dt);
+        //    if (sp.DialogResult == true)
+        //    {
 
-                    if (dt.Rows.Count > 0)
-                    {
-                        // cmbInvoiceStockProducts.SelectedValuePath = ds.Tables[0].Columns["ID"].ToString();
-                        // cmbInvoiceStockProducts.ItemsSource = ds.Tables[0].DefaultView;
-                        // cmbInvoiceStockProducts.DisplayMemberPath = ds.Tables[0].Columns["Products"].ToString();
-                        txtInvoice_Products.Text = dt.Rows[0]["Products123"].ToString();
-                        txtInvoice_AvailabeQty.Text = dt.Rows[0]["AvilableQty"].ToString();
-                        txtInvoiceActualPrice.Text = dt.Rows[0]["FinalPrice"].ToString();
-                        lblInvcWarranty.Content = dt.Rows[0]["Warranty"].ToString();
-                    }
-                }
-                catch (Exception)
-                {
+        //        try
+        //        {
+        //            con.Open();
+        //            DataSet ds = new DataSet();
+        //            // DataTable dt = new DataTable();
+        //            string qry = "Select  ID,Products123,AvilableQty, FinalPrice,Warranty from StockDetails where S_Status='Active' and ID='" + sp.txtStockPID.Text + "'  ";
+        //            cmd = new SqlCommand(qry, con);
+        //            SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //            DataTable dt = new DataTable();
+        //            // con.Open();
+        //            da.Fill(dt);
 
-                    throw;
-                }
-                finally { con.Close(); }
+        //            if (dt.Rows.Count > 0)
+        //            {
+        //                // cmbInvoiceStockProducts.SelectedValuePath = ds.Tables[0].Columns["ID"].ToString();
+        //                // cmbInvoiceStockProducts.ItemsSource = ds.Tables[0].DefaultView;
+        //                // cmbInvoiceStockProducts.DisplayMemberPath = ds.Tables[0].Columns["Products"].ToString();
+        //                txtInvoice_Products.Text = dt.Rows[0]["Products123"].ToString();
+        //                txtInvoice_AvailabeQty.Text = dt.Rows[0]["AvilableQty"].ToString();
+        //                txtInvoiceActualPrice.Text = dt.Rows[0]["FinalPrice"].ToString();
+        //                lblInvcWarranty.Content = dt.Rows[0]["Warranty"].ToString();
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
 
-            }
-        }
+        //            throw;
+        //        }
+        //        finally { con.Close(); }
+
+        //    }
+        //}
         
         public void FollowUp_FillData()
->>>>>>> origin/master
         {
             try
             {
@@ -10268,13 +10269,13 @@ namespace CRM_User_Interface
                 throw;
             }
             finally { con.Close(); }
-
-<<<<<<< HEAD
-        private void hlAddFollCampaign_Click(object sender, RoutedEventArgs e)
-=======
         }
+
+        private void hlAddFollCampaign_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        
         public void FillData_FollowupDetails()
->>>>>>> origin/master
         {
             frmAddCampaign obj = new frmAddCampaign();
             obj.AllCampaign_Details();
