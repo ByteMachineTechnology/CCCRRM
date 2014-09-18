@@ -9715,7 +9715,58 @@ namespace CRM_User_Interface
             grd_View_FollowupDetails.Visibility = System.Windows.Visibility.Hidden;
         }
 
-       
+        public void FillData_FollowupDetails()
+        {
+            try
+            {
+                con.Open();
+                string sqlquery = "SELECT F.[ID],F.[EmployeeID],F.[Followup_ID],F.[FTitle] + ' ' + F.[FiratName] + ' ' + F.[LastName] AS F.[FollowupName],F.[Date_Of_Birth],F.[Mobile_No] ,F.[Phone_No] " + 
+                                  ",F.[SourceOfEnquiry],F.[Occupation],F.[AnnualRevenue],F.[Email_ID],F.[FaxNo],F.[Wbsite],F.[Street],F.[City],F.[State],F.[ZipNo],F.[Country],F.[Description] " +
+                                  ",F.[F_Date] " +
+                                  ",E.[EmployeeFirstName] + ' ' + E.[EmployeeLastName] AS [EmployeeName] " +
+                                  " FROM [tlb_FollowUp] F " +
+                                  "INNER JOIN [tbl_Employee] E ON E.[ID]=F.[EmployeeID] " +
+                                  "WHERE F.[ID]='" + txtFollowupViewID.Text + "' ";
+                SqlCommand cmd = new SqlCommand(sqlquery, con);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    //leadinformation
+                    lblFollow_upName.Content = dt.Rows[0]["FollowupName"].ToString();
+                    lblLeadOwnerName.Content = dt.Rows[0]["EmployeeName"].ToString();
+                    lblLeadOwnerPhNo.Content = dt.Rows[0]["Phone_No"].ToString();
+                    lblLeadOwnerMbNo.Content = dt.Rows[0]["Mobile_No"].ToString();
+                    lblFLeadName.Content = dt.Rows[0]["FollowupName"].ToString();
+                    lblFLeadOwner.Content = dt.Rows[0]["EmployeeName"].ToString();
+                    lblFPhoneNo.Content = dt.Rows[0]["Phone_No"].ToString();
+                    lblFMobileNo.Content = dt.Rows[0]["Mobile_No"].ToString();
+                    lblFDOB.Content = dt.Rows[0]["Date_Of_Birth"].ToString();
+                    lblFEmail.Content = dt.Rows[0]["Email_ID"].ToString();
+                    lblFFax.Content = dt.Rows[0]["FaxNo"].ToString();
+                    lblFWebsite.Content = dt.Rows[0]["Wbsite"].ToString();
+                    lblFLeadSource.Content = dt.Rows[0]["SourceOfEnquiry"].ToString();
+                    lblFAnulRevenu.Content = dt.Rows[0]["AnnualRevenue"].ToString();
+                    lblFOccupation.Content = dt.Rows[0]["Occupation"].ToString();
+                    lblFStreet.Content = dt.Rows[0]["Street"].ToString();
+                    lblFCity.Content = dt.Rows[0]["City"].ToString();
+                    lblFState.Content = dt.Rows[0]["State"].ToString();
+                    lblFZipCode.Content = dt.Rows[0]["ZipNo"].ToString();
+                    lblFCountry.Content = dt.Rows[0]["Country"].ToString();
+                    lblFDesctiption.Content = dt.Rows[0]["Description"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
 
        
 

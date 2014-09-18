@@ -1388,7 +1388,7 @@
 
                 </Grid>
 
-                <Grid x:Name="grd_View_FollowupEntry" Visibility="Hidden"     HorizontalAlignment="Center"  Margin="32,-168,32,-77" Width="1160" Background="White" Loaded="grdFollowupEntry_Loaded">
+                <Grid x:Name="grd_View_FollowupEntry" Visibility="Hidden"  HorizontalAlignment="Center"  Margin="32,-168,32,-77" Width="1160" Background="White" Loaded="grdFollowupEntry_Loaded">
                     <Grid HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="1160" Background="#FF4684F0">
                         <Label Content="Walk-Ins Details" HorizontalAlignment="Left" Margin="18,2,0,0" VerticalAlignment="Top" Foreground="#FFFCFCFC" FontSize="16" FontWeight="Bold" FontFamily="Verdana"/>
                         <Label Content="This is where you fill your Walk-Ins details" HorizontalAlignment="Left" Margin="18,32,0,0" VerticalAlignment="Top" Foreground="#FFFCFCFC" FontSize="14" FontFamily="Verdana"/>
@@ -1523,7 +1523,7 @@
                                     <Label Content="X" HorizontalAlignment="Left" Margin="589,6,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontSize="14" Width="23"/>
                                     <TextBox x:Name="txt1" HorizontalAlignment="Left" Height="24" Margin="172,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242"/>
                                 </Grid>
-                                <Grid x:Name="grd_LeadInformation" Visibility="Hidden" HorizontalAlignment="Left" Height="431" Margin="258,204,0,0" VerticalAlignment="Top" Width="812" Background="#FFF4E8F5">
+                                <Grid x:Name="grd_LeadInformation" Visibility="Hidden" HorizontalAlignment="Left" Height="431" Margin="258,204,0,0" VerticalAlignment="Top" Width="812" Background="Gainsboro">
                                     <Label Content="Lead Information" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" Foreground="#FF505DE0" FontSize="14" FontFamily="Tw Cen MT"/>
                                     <Label Content="Lead Owner:" HorizontalAlignment="Left" Margin="27,37,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
                                     <Label x:Name="lblFLeadOwner" Content="Lead Owner:" HorizontalAlignment="Left" Margin="128,37,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="294"/>
@@ -1561,7 +1561,7 @@
                                     <Label x:Name="lblFDOB" Content="DateOfBirth" HorizontalAlignment="Left" Margin="503,66,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="293"/>
                                     <Label Content="Occupation:" HorizontalAlignment="Left" Margin="412,186,0,0" VerticalAlignment="Top" FontFamily="Verdana"/>
                                     <Label x:Name="lblFOccupation" Content="Occupation" HorizontalAlignment="Left" Margin="502,186,0,0" VerticalAlignment="Top" FontFamily="Verdana" Width="294"/>
-                                    <Button x:Name="btnViewInfo_Close" Content="X" HorizontalAlignment="Left" Margin="782,2,0,0" VerticalAlignment="Top" Width="28" Height="26" BorderBrush="#FFDBD1DC" Background="#FFF4E8F5" FontSize="16" FontWeight="Bold" Click="btnViewInfo_Close_Click"/>
+                                    <Button x:Name="btnViewInfo_Close" Content="X" HorizontalAlignment="Left" Margin="784,0,0,0" VerticalAlignment="Top" Width="28" Height="26" BorderBrush="Gainsboro" Background="Gainsboro" FontSize="16" FontWeight="Bold" Click="btnViewInfo_Close_Click"/>
                                 </Grid>
 
                             </Grid>
