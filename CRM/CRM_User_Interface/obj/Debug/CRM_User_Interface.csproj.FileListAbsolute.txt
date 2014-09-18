@@ -124,3 +124,6 @@ C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_User_Interf
 C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_User_Interface\obj\Debug\frmCampaginLeads.g.cs
 C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_User_Interface\obj\Debug\frmAddCampaign.baml
 C:\Users\Dexter\Desktop\Backup CRM\New Design CRM\10-09-2014\CRM\CRM_User_Interface\obj\Debug\frmAddCampaign.g.cs
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\bin\Debug\CRM_User_Interface.exe.config
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.exe
+C:\Users\Dexter\Documents\GitHub\CCCRRM\CRM\CRM_User_Interface\obj\Debug\CRM_User_Interface.pdb
