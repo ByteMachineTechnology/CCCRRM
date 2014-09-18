@@ -118,8 +118,8 @@ namespace CRM_User_Interface
 
         BAL_C_Installment bcins = new BAL_C_Installment();
         DAL_C_Installment dcins = new DAL_C_Installment();
-
         BAL_Warranty balw = new BAL_Warranty();
+       // BAL_Warranty balw = new BAL_Warranty();
         DAL_Warranty dalw = new DAL_Warranty();
 
         BAL_CreateCampaign bcrcamp = new BAL_CreateCampaign();
@@ -1010,7 +1010,7 @@ namespace CRM_User_Interface
                 MessageBox.Show("Browse Photo", "UniWeb Technocrats", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        //////////////////
+       
 
         #region AddProduct Function
         #region Domain Function Event
@@ -5163,11 +5163,11 @@ namespace CRM_User_Interface
 
         }
 
-        private void btnSaleProductsFetch_Click(object sender, RoutedEventArgs e)
-        {
-            StockProducts sp = new StockProducts();
-            sp.Show();
-        }
+        //private void btnSaleProductsFetch_Click(object sender, RoutedEventArgs e)
+        //{
+        //    StockProducts sp = new StockProducts();
+        //    sp.Show();
+        //}
         #endregion FollowupView Buttin Event
 
         public void ProductID123(string piid)
@@ -5249,10 +5249,14 @@ namespace CRM_User_Interface
             
         }
        
+<<<<<<< HEAD
         //public void FillData_FollowupDetails()
         //{
 
         //}
+=======
+       
+>>>>>>> c4f714b1b16c42676a8084e0cde189cb236a9a3f
        //public void ProductID123(string piid)
        // {
        //     txtProductID.Text = piid;
@@ -10271,11 +10275,19 @@ namespace CRM_User_Interface
             finally { con.Close(); }
         }
 
+<<<<<<< HEAD
+=======
+        }
+>>>>>>> c4f714b1b16c42676a8084e0cde189cb236a9a3f
         private void hlAddFollCampaign_Click(object sender, RoutedEventArgs e)
         {
         }
         
         public void FillData_FollowupDetails()
+<<<<<<< HEAD
+=======
+
+>>>>>>> c4f714b1b16c42676a8084e0cde189cb236a9a3f
         {
             frmAddCampaign obj = new frmAddCampaign();
             obj.AllCampaign_Details();
@@ -10325,24 +10337,6 @@ namespace CRM_User_Interface
                 //ViewAllContactCampaign_Details();
             }
         }
-
-        
-
-        
-
-        
-
-
-
-
-
-
-
-
-                
-
-        
-
         private void cmbInvoice_Tax1_DropDownClosed(object sender, EventArgs e)
         {
             calculatetax();
@@ -11335,3 +11329,4 @@ namespace CRM_User_Interface
         }
     }
 }
+

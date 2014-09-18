@@ -1442,11 +1442,10 @@
 
                 </Grid>
 
-<<<<<<< HEAD
-                <Grid x:Name="grd_View_FollowupEntry" Visibility="Hidden"   HorizontalAlignment="Center"  Margin="32,-168,32,-77" Width="1160" Background="White" Loaded="grdFollowupEntry_Loaded">
-=======
+
+                <!--<Grid x:Name="grd_View_FollowupEntry" Visibility="Hidden"   HorizontalAlignment="Center"  Margin="32,-168,32,-77" Width="1160" Background="White" Loaded="grdFollowupEntry_Loaded">-->
                 <Grid x:Name="grd_View_FollowupEntry" Visibility="Hidden"  HorizontalAlignment="Center"  Margin="32,-168,32,-77" Width="1109" Background="White" Loaded="grdFollowupEntry_Loaded">
->>>>>>> e767f6f5802186d3ae034d5b80c175d42c839310
+
                     <Grid HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="1160" Background="#FF4684F0">
                         <Label Content="Walk-Ins Details" HorizontalAlignment="Left" Margin="18,2,0,0" VerticalAlignment="Top" Foreground="#FFFCFCFC" FontSize="16" FontWeight="Bold" FontFamily="Verdana"/>
                         <Label Content="This is where you fill your Walk-Ins details" HorizontalAlignment="Left" Margin="18,32,0,0" VerticalAlignment="Top" Foreground="#FFFCFCFC" FontSize="14" FontFamily="Verdana"/>
